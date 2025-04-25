@@ -246,8 +246,7 @@ bool DFGNode::isAdd() {
 
 // Only detect integer addition.
 bool DFGNode::isIadd() {
-  if (m_opcodeName.compare("getelementptr") == 0 or
-      m_opcodeName.compare("add") == 0  or
+  if (m_opcodeName.compare("add") == 0  or
       m_opcodeName.compare("sub") == 0) {
     return true;
   }
@@ -749,4 +748,12 @@ string getOpcodeNameHelper(Instruction* inst) {
   if (opcode == Instruction::Call) return "call";
   
   return "unknown";
+}
+
+void DFGNode::setBBID(int t_bbID) {
+  m_bbID = t_bbID;
+}
+
+int DFGNode::getBBID() {
+  return m_bbID;
 }
