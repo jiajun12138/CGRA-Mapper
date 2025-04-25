@@ -1,9 +1,9 @@
 cat param_exclusive.json > param.json 
 opt-12 -load ../../build/src/libmapperPass.so -mapperPass multicycle_test.bc
-mv dfg.json dfg_exclusive.json
+mv dfg.json exclusive_dfg.json
 cat param_distributed.json > param.json 
 opt-12 -load ../../build/src/libmapperPass.so -mapperPass multicycle_test.bc
-mv dfg.json dfg_distributed.json
+mv dfg.json distributed_dfg.json
 cat param_distributed.json > param.json 
 opt-12 -load ../../build/src/libmapperPass.so -mapperPass multicycle_test.bc
-mv dfg.json dfg_distributed.json
+mv dfg.json distributed_dfg.json
