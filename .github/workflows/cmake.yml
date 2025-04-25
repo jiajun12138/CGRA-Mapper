@@ -37,7 +37,7 @@ jobs:
       # Build your program with the given configuration
       run: make
 
-    Testing.
+    # Testing.
     - name: Test fusion via Nonlinear kernel
       working-directory: ${{github.workspace}}/test/nonlinear
       run: |
