@@ -59,11 +59,11 @@ DFGNode::DFGNode(int t_id, DFGNode* old_node) {
   m_inst = old_node->m_inst;
   m_stringRef = old_node->m_stringRef;
   m_predNodes = new list<DFGNode*>();
-  for (DFGNode* predNode: *old_node->m_predNodes) {
+  for (DFGNode* predNode: *old_node->getPredNodes()) {
     m_predNodes->push_back(predNode);
   }
   m_succNodes = new list<DFGNode*>();
-  for (DFGNode* succNode: *old_node->m_succNodes) {
+  for (DFGNode* succNode: *old_node->getSuccNodes()) {
     m_succNodes->push_back(succNode);
   }
   m_opcodeName = old_node->m_opcodeName;
@@ -579,7 +579,10 @@ void DFGNode::initType() {
   } else if (m_opcodeName.compare("intQuantize") == 0) {
     m_optType = "OPT_Quantize";
     m_fuType = "Quantize";
-  } 
+  } else if (getOpcodeName() == "fp2fx") {
+    m_optType = "OPT_FP2FX";
+    m_fuType = "Fp2fx";
+  }
   else {
     // TODO: Update opcode name of call 
     m_optType = "Unfamiliar: " + getOpcodeName();
